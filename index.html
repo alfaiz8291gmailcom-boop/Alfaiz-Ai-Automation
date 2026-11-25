@@ -1,5 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Alfaiz Ansari AI</title>
+<title>AI Automation Hub</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -191,6 +190,167 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
 .social { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--muted); transition: all .2s; }
 .social:hover { color: #fff; border-color: var(--blue); background: rgba(59,130,246,.14); transform: translateY(-2px); }
 
+/* platform: categories, cards, filters, pulse */
+.cat-chatbot { --cc: #8FBBFF; --cb: rgba(59,130,246,.15); --cl: rgba(59,130,246,.45); }
+.cat-workflow { --cc: #6EE7B7; --cb: rgba(16,185,129,.14); --cl: rgba(16,185,129,.45); }
+.cat-content { --cc: #67E8F9; --cb: rgba(34,211,238,.13); --cl: rgba(34,211,238,.45); }
+.cat-web { --cc: #C4B5FD; --cb: rgba(167,139,250,.14); --cl: rgba(167,139,250,.45); }
+.catbadge { display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 99px; color: var(--cc); background: var(--cb); border: 1px solid var(--cl); }
+.exbadge { display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 99px; color: #FCD34D; background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.4); }
+.toolbar { margin-top: 36px; padding: 16px; display: grid; gap: 14px; }
+.search { position: relative; }
+.search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.search .input { padding-left: 44px; }
+.fchips { display: flex; flex-wrap: wrap; gap: 8px; }
+.fchip { min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); font: 600 13px var(--font-body); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: color .2s, border-color .2s, background .2s; }
+.fchip:hover { color: #fff; border-color: var(--blue); }
+.fchip[aria-pressed="true"] { background: var(--blue-deep); border-color: var(--blue-deep); color: #fff; }
+.fchip .n { font-size: 11px; padding: 1px 7px; border-radius: 99px; background: rgba(255,255,255,.14); font-variant-numeric: tabular-nums; }
+.feed-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 18px 2px 14px; font-size: 14px; color: var(--muted); min-height: 32px; }
+.link-btn { background: none; border: 0; color: #8FBBFF; font: 600 14px var(--font-body); cursor: pointer; text-decoration: underline; padding: 6px 2px; }
+.pcard { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+.pc-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pc-title { font-size: 19px; font-weight: 700; line-height: 1.25; overflow-wrap: anywhere; }
+.pc-problem { color: var(--muted); font-size: 14.5px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+.pc-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 8px 12px; flex-wrap: wrap; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.pc-by { min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pcard .more-btn { margin-top: 0; padding: 0; }
+.pcard .kpi { align-self: flex-start; max-width: 100%; font-size: 13px; line-height: 1.4; border-radius: 14px; text-align: left; overflow-wrap: anywhere; }
+.empty { grid-column: 1 / -1; text-align: center; padding: 48px 20px; border: 1px dashed var(--line); border-radius: 20px; color: var(--muted); display: grid; gap: 14px; justify-items: center; }
+.empty strong { color: var(--fg); font-family: var(--font-display); font-size: 18px; }
+.skel { height: 260px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(100deg, rgba(255,255,255,.04) 30%, rgba(255,255,255,.09) 50%, rgba(255,255,255,.04) 70%); background-size: 200% 100%; animation: shimmer 1.4s infinite linear; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+.crow { display: grid; grid-template-columns: minmax(0,120px) minmax(0,1fr) 28px; gap: 10px; align-items: center; font-size: 12.5px; margin-top: 8px; }
+.crow .lbl { color: #C2CCDF; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.crow .trk { height: 8px; border-radius: 99px; background: rgba(255,255,255,.08); overflow: hidden; }
+.crow .fill { height: 100%; width: 0; border-radius: 99px; background: var(--cc); transition: width .8s cubic-bezier(.2,.8,.2,1); }
+.crow .cnt { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.latest { list-style: none; padding: 0; margin: 10px 0 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+.latest > li { min-width: 0; }
+.lat-item { width: 100%; display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.04); color: var(--fg); font: 400 13px var(--font-body); text-align: left; cursor: pointer; min-width: 0; transition: background .2s, border-color .2s; }
+.lat-item:hover { background: rgba(59,130,246,.12); border-color: rgba(59,130,246,.5); }
+.lat-item .dotc { width: 8px; height: 8px; border-radius: 50%; background: var(--cc); flex: none; }
+.lat-item .t { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lat-item small { color: var(--muted); font-size: 11px; flex: none; }
+.pulse-h { font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); margin-top: 18px; }
+.pulse-note { font-size: 12px; color: var(--muted); margin-top: 14px; }
+.cat-count { margin-top: 16px; font-size: 13px; font-weight: 600; color: var(--green); }
+.cat-count + .more-btn { margin-top: 4px; }
+.ticks { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 10px 22px; color: #C2CCDF; font-size: 14px; }
+.ticks li { display: flex; align-items: center; gap: 8px; }
+.ticks svg { color: var(--green); flex: none; }
+
+/* case-study and form pieces inside modals */
+.pipe { list-style: none; padding: 0; margin: 0; }
+.pipe li { position: relative; display: flex; gap: 14px; align-items: flex-start; padding-bottom: 18px; }
+.pipe li:last-child { padding-bottom: 0; }
+.pipe li:not(:last-child)::before { content: ""; position: absolute; left: 14px; top: 32px; bottom: 2px; width: 2px; background: linear-gradient(180deg, rgba(59,130,246,.6), rgba(16,185,129,.3)); }
+.pipe .pn { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font: 800 13px var(--font-display); color: #fff; background: linear-gradient(135deg, var(--blue-deep), #0E9F78); flex: none; }
+.pipe .pt { padding-top: 4px; min-width: 0; overflow-wrap: anywhere; color: #D3DCEC; font-size: 15px; }
+.m-text { color: #C9D3E6; font-size: 15px; white-space: pre-line; overflow-wrap: anywhere; max-width: 72ch; }
+.m-by { color: var(--muted); font-size: 14px; margin-top: 8px; overflow-wrap: anywhere; }
+.m-by a { color: #8FBBFF; }
+.m-result { font-family: var(--font-display); font-weight: 800; font-size: clamp(18px, 3vw, 24px); color: #6EE7B7; padding: 16px 18px; border-radius: 16px; background: rgba(16,185,129,.10); border: 1px solid rgba(16,185,129,.35); overflow-wrap: anywhere; }
+button.tag.toolchip { cursor: pointer; font-family: var(--font-body); font-size: 13px; padding: 6px 12px; color: #D6E2F7; }
+button.tag.toolchip:hover { border-color: var(--blue); color: #fff; }
+.m-notice { margin-top: 18px; padding: 12px 14px; border-radius: 12px; font-size: 13px; color: #FCD34D; background: rgba(245,158,11,.10); border: 1px solid rgba(245,158,11,.35); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-grid { display: grid; gap: 16px; grid-template-columns: minmax(0,1fr); margin-top: 24px; }
+.form-grid > div { min-width: 0; }
+.hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: #C2CCDF; }
+.check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--blue); flex: none; }
+.form-error { margin-top: 14px; padding: 12px 14px; border-radius: 12px; font-size: 14px; color: #FCA5A5; background: rgba(248,113,113,.10); border: 1px solid rgba(248,113,113,.4); }
+.btn[disabled] { opacity: .6; cursor: not-allowed; transform: none; }
+.btn-danger { color: #FCA5A5; border-color: rgba(248,113,113,.4); }
+.btn-danger:hover { background: rgba(248,113,113,.12); border-color: #F87171; }
+@media (min-width: 640px) { .form-grid.two { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+
+/* clickable cards */
+.clickable { cursor: pointer; }
+.more-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding: 8px 0; border: 0; background: transparent; color: #8FBBFF; font: 600 14px var(--font-body); cursor: pointer; }
+.more-btn svg { transition: transform .25s ease; }
+.clickable:hover .more-btn, .more-btn:focus-visible { color: #fff; }
+.clickable:hover .more-btn svg { transform: translateX(5px); }
+article.clickable .more-btn { align-self: flex-start; }
+.projects-grid .more-btn { margin-top: 0; }
+
+/* modal */
+[hidden] { display: none !important; }
+html.modal-open { overflow: hidden; }
+.modal {
+  position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center;
+  box-sizing: border-box;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: rgba(4,7,14,.74); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  opacity: 0; transition: opacity .3s ease;
+}
+.modal.open { opacity: 1; }
+.modal-panel {
+  position: relative; display: flex; flex-direction: column; width: 100%; max-width: 900px; max-height: 100%;
+  background: #0F1626; border: 1px solid rgba(255,255,255,.14); border-radius: 24px; overflow: hidden;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,.8), 0 0 0 1px rgba(59,130,246,.12), 0 30px 80px -40px rgba(59,130,246,.5);
+  transform: translateY(28px) scale(.96); opacity: 0;
+  transition: transform .38s cubic-bezier(.2,.9,.25,1), opacity .3s ease;
+}
+.modal.open .modal-panel { transform: none; opacity: 1; }
+.modal-panel:focus { outline: none; }
+.modal-x { position: absolute; top: 14px; right: 14px; z-index: 3; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.06); color: var(--fg); cursor: pointer; transition: background .2s, border-color .2s, transform .2s; }
+.modal-x:hover { background: rgba(255,255,255,.12); border-color: var(--blue); transform: rotate(90deg); }
+.m-scroll { overflow-y: auto; overscroll-behavior: contain; padding: 32px 32px 0; }
+.m-head { display: flex; gap: 16px; align-items: center; padding-right: 48px; }
+.m-title { font-size: clamp(22px, 3.4vw, 30px); font-weight: 800; line-height: 1.15; }
+.m-intro { color: #C2CCDF; margin-top: 16px; max-width: 70ch; }
+.m-cols { display: grid; grid-template-columns: minmax(0,1fr); gap: 28px; margin-top: 28px; }
+.m-sec { margin-top: 28px; min-width: 0; }
+.m-cols .m-sec { margin-top: 0; }
+.m-h { font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+.m-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 15px; color: #C9D3E6; }
+.m-list li { display: flex; gap: 10px; align-items: flex-start; }
+.m-list li::before { content: ""; flex: none; width: 7px; height: 7px; margin-top: 9px; border-radius: 50%; background: var(--green); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips .tag { font-size: 13px; padding: 6px 12px; color: #D6E2F7; }
+.m-note { font-size: 13px; color: var(--muted); margin-top: 12px; }
+.m-steps, .tl { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.m-steps li, .tl li { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px solid var(--line); min-width: 0; }
+.m-steps p, .tl p { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.m-steps strong, .tl strong { font-family: var(--font-display); font-size: 15px; }
+.step-n.sm { width: 30px; height: 30px; border-radius: 9px; font-size: 14px; }
+.tl-w { flex: none; min-width: 74px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #7DB0FF; padding-top: 3px; }
+.flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0,1fr); gap: 24px; }
+.flow li { position: relative; padding: 14px; border-radius: 14px; background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.3); min-width: 0; }
+.flow li:not(:last-child)::after { content: "\2193"; position: absolute; left: 50%; bottom: -21px; transform: translateX(-50%); color: var(--cyan); font-weight: 700; font-size: 16px; line-height: 1; }
+.flow small { display: block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
+.flow b { display: block; font-family: var(--font-display); font-size: 14px; margin-top: 4px; overflow-wrap: anywhere; }
+.flow span { display: block; font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+.ba { display: grid; gap: 10px; }
+.ba-row { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr); gap: 12px; align-items: center; padding: 12px 16px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px solid var(--line); }
+.ba-row.hd { background: transparent; border-color: transparent; padding-block: 0; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ba-m { font-weight: 600; font-size: 14px; min-width: 0; }
+.ba-b { color: #FCA5A5; font-family: var(--font-display); font-weight: 700; font-size: 15px; min-width: 0; }
+.ba-a { color: #6EE7B7; font-family: var(--font-display); font-weight: 800; font-size: 15px; min-width: 0; }
+.m-foot { position: sticky; bottom: 0; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 32px -32px 0; padding: 16px 32px; background: linear-gradient(180deg, rgba(15,22,38,0), #0F1626 30%); border-top: 1px solid var(--line); }
+.m-foot .btn-primary { flex: 1 1 220px; }
+.m-dur { display: inline-flex; margin-left: 10px; vertical-align: middle; font-size: 12px; letter-spacing: .04em; text-transform: none; color: #9FD8FF; padding: 3px 10px; border-radius: 99px; border: 1px solid rgba(34,211,238,.4); font-weight: 600; }
+.input.flash { animation: flash 1.6s ease; }
+@keyframes flash { 0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); } 25% { box-shadow: 0 0 0 5px rgba(16,185,129,.6); border-color: var(--green); } }
+@media (min-width: 760px) {
+  .m-cols { grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 36px; }
+  .flow { grid-template-columns: repeat(5, minmax(0,1fr)); gap: 20px; }
+  .flow li:not(:last-child)::after { content: "\2192"; left: auto; right: -17px; bottom: auto; top: 50%; transform: translateY(-50%); }
+}
+@media (max-width: 640px) {
+  .m-scroll { padding: 22px 18px 0; }
+  .m-foot { margin: 26px -18px 0; padding: 14px 18px; }
+  .m-head { gap: 12px; }
+  .ba-row { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .ba-row .ba-m { grid-column: 1 / -1; }
+  .ba-row.hd { display: none; }
+  .ba-b::before { content: "Before  "; font-size: 11px; font-weight: 600; color: var(--muted); display: block; letter-spacing: .06em; text-transform: uppercase; }
+  .ba-a::before { content: "After  "; font-size: 11px; font-weight: 600; color: var(--muted); display: block; letter-spacing: .06em; text-transform: uppercase; }
+  .tl li { flex-direction: column; gap: 4px; }
+}
+
 @media (max-width: 640px) {
   .section { padding-block: 64px; }
   .calc-panel, .result { padding: 20px; }
@@ -205,20 +365,22 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
 <a href="#main" class="sr-only focus:not-sr-only" style="position:absolute;left:12px;top:12px;z-index:100;background:#fff;color:#000;padding:8px 14px;border-radius:8px;">Skip to content</a>
 
 <header class="nav">
-  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;">
-    <a href="#top" aria-label="Alfaiz Ansari, home" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
-      <span class="logo-mark">AA</span>
-      <span style="font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.02em;">Alfaiz <span class="grad">Ansari</span></span>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:68px;">
+    <a href="#top" aria-label="AI Automation Hub, home" style="display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;">
+      <span class="logo-mark">AH</span>
+      <span style="font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.02em;white-space:nowrap;">
+        <span class="hidden min-[480px]:inline">AI Automation <span class="grad">Hub</span></span><span class="min-[480px]:hidden">AI <span class="grad">Hub</span></span>
+      </span>
     </a>
     <nav aria-label="Primary" class="hidden lg:flex" style="align-items:center;gap:26px;">
-      <a class="nav-link" href="#services">Services</a>
-      <a class="nav-link" href="#how-it-works">How It Works</a>
       <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#categories">Categories</a>
+      <a class="nav-link" href="#how-it-works">How It Works</a>
       <a class="nav-link" href="#calculator">ROI Calculator</a>
       <a class="nav-link" href="#contact">Contact</a>
     </nav>
     <div style="display:flex;align-items:center;gap:10px;">
-      <a href="#contact" class="btn btn-primary btn-sm hidden sm:inline-flex">Book a Free Audit</a>
+      <button type="button" class="btn btn-primary btn-sm" data-open-submit aria-haspopup="dialog">+ <span class="hidden sm:inline">&nbsp;Submit Your Project</span><span class="sm:hidden">&nbsp;Submit</span></button>
       <button id="menuBtn" class="lg:hidden btn btn-ghost btn-sm" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu" style="padding:0 12px;">
         <svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -226,12 +388,12 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
   </div>
   <div id="mobileMenu" hidden style="border-top:1px solid var(--line);">
     <div class="wrap" style="display:grid;gap:4px;padding-block:14px;">
-      <a class="nav-link mm" style="font-size:16px;padding:12px 4px;" href="#services">Services</a>
-      <a class="nav-link mm" style="font-size:16px;padding:12px 4px;" href="#how-it-works">How It Works</a>
       <a class="nav-link mm" style="font-size:16px;padding:12px 4px;" href="#projects">Projects</a>
+      <a class="nav-link mm" style="font-size:16px;padding:12px 4px;" href="#categories">Categories</a>
+      <a class="nav-link mm" style="font-size:16px;padding:12px 4px;" href="#how-it-works">How It Works</a>
       <a class="nav-link mm" style="font-size:16px;padding:12px 4px;" href="#calculator">ROI Calculator</a>
       <a class="nav-link mm" style="font-size:16px;padding:12px 4px;" href="#contact">Contact</a>
-      <a href="#contact" class="btn btn-primary mm" style="margin-top:8px;">Book a Free Audit</a>
+      <button type="button" class="btn btn-primary mm" style="margin-top:8px;" data-open-submit>+ Submit Your Project</button>
     </div>
   </div>
 </header>
@@ -243,53 +405,85 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
   <div class="wrap" style="position:relative;padding-block:72px 88px;">
     <div class="grid lg:grid-cols-2 gap-14 items-center">
       <div style="min-width:0;">
-        <span class="pill"><span class="dot"></span>Taking on new automation projects</span>
-        <h1 style="font-size:clamp(36px,6vw,64px);line-height:1.04;font-weight:800;margin-top:22px;">
-          Get your team's time back. <span class="grad">Let AI run the busywork.</span>
+        <span class="pill"><span class="dot"></span>Open to every builder, agency, and business</span>
+        <h1 style="font-size:clamp(36px,6vw,62px);line-height:1.05;font-weight:800;margin-top:22px;">
+          Discover real AI automations. <span class="grad">Share yours with the world.</span>
         </h1>
         <p class="lead" style="margin-top:22px;">
-          I build custom AI agents and workflow automations that answer customers, move data between your tools, and keep your pipeline full, so you can grow without hiring for every repetitive task.
+          AI Automation Hub is an open showcase where builders publish the workflows they have made, with the problem, the architecture, the tools, and the measured result, so everyone can learn from what works.
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
-          <a href="#services" class="btn btn-primary">Explore Solutions
+          <button type="button" class="btn btn-primary" data-open-submit aria-haspopup="dialog">+ Submit Your Project</button>
+          <a href="#projects" class="btn btn-ghost">Browse Projects
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="#contact" class="btn btn-ghost">Contact Me</a>
         </div>
-        <dl style="display:flex;flex-wrap:wrap;gap:28px 40px;margin-top:44px;">
-          <div class="stat"><dt style="font-size:13px;color:var(--muted);order:2;">Typical weekly hours reclaimed</dt><dd style="margin:0;"><b class="grad">20–40 hrs</b></dd></div>
-          <div class="stat"><dt style="font-size:13px;color:var(--muted);order:2;">Average first response time</dt><dd style="margin:0;"><b class="grad">&lt; 1 min</b></dd></div>
-        </dl>
+        <ul class="ticks">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Free to submit</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Takes about 3 minutes</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>No account needed</li>
+        </ul>
       </div>
 
-      <!-- live dashboard mockup -->
-      <div class="glass dash" role="img" aria-label="Sample dashboard showing live automation metrics: tasks automated, hours saved, and leads captured, with a recent activity feed">
+      <div class="glass dash" role="region" aria-label="Platform statistics">
         <div class="dash-top">
           <div style="display:flex;align-items:center;gap:10px;min-width:0;">
             <span class="dot"></span>
-            <strong style="font-family:var(--font-display);font-size:15px;">Automation Control Room</strong>
+            <strong style="font-family:var(--font-display);font-size:15px;">Platform Pulse</strong>
           </div>
-          <span class="tag">Sample data</span>
+          <span class="tag">Counted from the feed</span>
         </div>
         <div class="dash-tiles">
-          <div class="tile"><div class="tile-label">Tasks automated today</div><div class="tile-val" id="mTasks">1,284</div><div class="tile-delta">▲ 18% vs. yesterday</div></div>
-          <div class="tile"><div class="tile-label">Hours saved this week</div><div class="tile-val" id="mHours">37.5</div><div class="tile-delta">▲ 6.2 hrs</div></div>
-          <div class="tile"><div class="tile-label">Leads captured</div><div class="tile-val" id="mLeads">96</div><div class="tile-delta">▲ 3x pace</div></div>
+          <div class="tile"><div class="tile-label">Projects listed</div><div class="tile-val" id="pTotal">-</div></div>
+          <div class="tile"><div class="tile-label">Categories covered</div><div class="tile-val" id="pCats">-</div></div>
+          <div class="tile"><div class="tile-label">Community submissions</div><div class="tile-val" id="pComm">-</div></div>
         </div>
-        <div class="bars" id="bars" aria-hidden="true"></div>
-        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:6px;" aria-hidden="true"><span>Last 12 hours</span><span>Automated runs / hr</span></div>
-        <ul class="feed" id="feed" aria-hidden="true"></ul>
+        <p class="pulse-h">Projects by category</p>
+        <div id="pBars"></div>
+        <p class="pulse-h">Latest listings</p>
+        <ul class="latest" id="pLatest"></ul>
+        <p class="pulse-note" id="pNote"></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services" class="section" style="background:var(--bg-2);border-block:1px solid var(--line);">
+<!-- PROJECTS -->
+<section id="projects" class="section">
   <div class="wrap">
-    <p class="eyebrow">What I build</p>
-    <h2 class="h2" style="margin-top:10px;max-width:20ch;">Four ways AI can start paying for itself</h2>
-    <p class="lead" style="margin-top:14px;">Each solution is scoped to one measurable outcome, built on the tools you already use, and handed over with clear documentation.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-end;">
+      <div style="min-width:0;">
+        <p class="eyebrow">Project showcase</p>
+        <h2 class="h2" style="margin-top:10px;max-width:22ch;">Real AI automations, shared by the people who built them</h2>
+        <p class="lead" style="margin-top:14px;">Search by tool or keyword, filter by category, and open any project for the full case study.</p>
+      </div>
+      <button type="button" class="btn btn-primary" data-open-submit aria-haspopup="dialog">+ Submit Your Project</button>
+    </div>
+
+    <div class="glass toolbar">
+      <div class="search">
+        <label for="q" class="sr-only">Search projects by tool or keyword</label>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" class="input" placeholder="Search by tool or keyword, for example n8n, WhatsApp, lead capture" autocomplete="off">
+      </div>
+      <div id="catChips" class="fchips" role="group" aria-label="Filter by category"></div>
+    </div>
+
+    <div class="feed-meta">
+      <span id="resultCount" aria-live="polite"></span>
+      <button type="button" id="clearFilters" class="link-btn" hidden>Clear filters</button>
+    </div>
+    <div id="feed" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<!-- CATEGORIES -->
+<section id="categories" class="section" style="background:var(--bg-2);border-block:1px solid var(--line);">
+  <div class="wrap">
+    <p class="eyebrow">Categories</p>
+    <h2 class="h2" style="margin-top:10px;max-width:20ch;">Four categories of AI automation</h2>
+    <p class="lead" style="margin-top:14px;">Open a category for use cases, typical tools, and a workflow outline, then browse the projects listed in it.</p>
     <div class="grid sm:grid-cols-2 gap-5" style="margin-top:44px;">
       <article class="glass lift" style="padding:28px;">
         <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></div>
@@ -339,27 +533,27 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
 <section id="how-it-works" class="section">
   <div class="wrap">
     <p class="eyebrow">How it works</p>
-    <h2 class="h2" style="margin-top:10px;max-width:22ch;">From first call to a working system in weeks</h2>
+    <h2 class="h2" style="margin-top:10px;max-width:22ch;">Learn from real builds, then share yours</h2>
     <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-5" style="list-style:none;padding:0;margin:44px 0 0;">
       <li class="glass" style="padding:24px;">
         <div class="step-n">1</div>
-        <h3 style="font-size:18px;font-weight:700;margin-top:16px;">Free audit</h3>
-        <p style="color:var(--muted);font-size:15px;margin-top:6px;">A 30-minute call to map where your team loses time and rank the fixes by payoff.</p>
+        <h3 style="font-size:18px;font-weight:700;margin-top:16px;">Browse and filter</h3>
+        <p style="color:var(--muted);font-size:15px;margin-top:6px;">Search by tool or keyword, or narrow the feed to one of four categories.</p>
       </li>
       <li class="glass" style="padding:24px;">
         <div class="step-n">2</div>
-        <h3 style="font-size:18px;font-weight:700;margin-top:16px;">Scope and plan</h3>
-        <p style="color:var(--muted);font-size:15px;margin-top:6px;">A fixed scope with a target metric, timeline, and price, so there are no surprises.</p>
+        <h3 style="font-size:18px;font-weight:700;margin-top:16px;">Open a case study</h3>
+        <p style="color:var(--muted);font-size:15px;margin-top:6px;">See the problem, the architecture flow, the tools used, and the measured result.</p>
       </li>
       <li class="glass" style="padding:24px;">
         <div class="step-n">3</div>
-        <h3 style="font-size:18px;font-weight:700;margin-top:16px;">Build and test</h3>
-        <p style="color:var(--muted);font-size:15px;margin-top:6px;">Working versions shared weekly, tested on your real data before anything goes live.</p>
+        <h3 style="font-size:18px;font-weight:700;margin-top:16px;">Submit your project</h3>
+        <p style="color:var(--muted);font-size:15px;margin-top:6px;">Fill in one short form. No account is needed and it takes about three minutes.</p>
       </li>
       <li class="glass" style="padding:24px;">
         <div class="step-n">4</div>
-        <h3 style="font-size:18px;font-weight:700;margin-top:16px;">Launch and support</h3>
-        <p style="color:var(--muted);font-size:15px;margin-top:6px;">Team training, documentation, and monitoring so the system keeps working after hand-off.</p>
+        <h3 style="font-size:18px;font-weight:700;margin-top:16px;">Get discovered</h3>
+        <p style="color:var(--muted);font-size:15px;margin-top:6px;">Your project appears in the public feed with your name and link for others to find.</p>
       </li>
     </ol>
   </div>
@@ -415,56 +609,28 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="section">
-  <div class="wrap">
-    <p class="eyebrow">Featured projects</p>
-    <h2 class="h2" style="margin-top:10px;max-width:22ch;">Real problems, measurable results</h2>
-    <p class="lead" style="margin-top:14px;">A look at the kind of systems I build, each tied to a number the business cares about.</p>
-    <div class="grid lg:grid-cols-3 gap-5" style="margin-top:44px;">
-
-      <article class="glass lift" style="padding:26px;display:flex;flex-direction:column;gap:18px;">
-        <div style="display:flex;gap:8px;flex-wrap:wrap;"><span class="tag">Real estate</span><span class="tag">WhatsApp</span><span class="tag">CRM</span></div>
-        <h3 style="font-size:21px;font-weight:700;">WhatsApp lead-qualification agent</h3>
-        <div><p class="case-label" style="color:#FCA5A5;">The problem</p><p style="color:var(--muted);font-size:15px;">Property enquiries arrived at all hours, replies took half a day, and most hot leads went cold before an agent called.</p></div>
-        <div><p class="case-label" style="color:#7DB0FF;">The AI solution</p><p style="color:var(--muted);font-size:15px;">An assistant that replies instantly, asks budget and location questions, books site visits, and pushes scored leads into the CRM.</p></div>
-        <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;"><span class="kpi">3x lead conversion</span><span class="kpi">&lt; 1 min replies</span></div>
-      </article>
-
-      <article class="glass lift" style="padding:26px;display:flex;flex-direction:column;gap:18px;">
-        <div style="display:flex;gap:8px;flex-wrap:wrap;"><span class="tag">E-commerce</span><span class="tag">Sheets</span><span class="tag">Email</span></div>
-        <h3 style="font-size:21px;font-weight:700;">Order-to-delivery workflow automation</h3>
-        <div><p class="case-label" style="color:#FCA5A5;">The problem</p><p style="color:var(--muted);font-size:15px;">Staff copied orders between the store, a spreadsheet, and the courier portal by hand, and typos caused wrong shipments.</p></div>
-        <div><p class="case-label" style="color:#7DB0FF;">The AI solution</p><p style="color:var(--muted);font-size:15px;">One automated flow that validates each order, books shipping, updates the sheet, and sends tracking updates to the customer.</p></div>
-        <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;"><span class="kpi">25+ hrs saved / week</span><span class="kpi">90% fewer errors</span></div>
-      </article>
-
-      <article class="glass lift" style="padding:26px;display:flex;flex-direction:column;gap:18px;">
-        <div style="display:flex;gap:8px;flex-wrap:wrap;"><span class="tag">Coaching</span><span class="tag">Content</span><span class="tag">Social</span></div>
-        <h3 style="font-size:21px;font-weight:700;">AI content and newsletter engine</h3>
-        <div><p class="case-label" style="color:#FCA5A5;">The problem</p><p style="color:var(--muted);font-size:15px;">A solo coach spent most evenings writing posts and emails, and publishing became inconsistent.</p></div>
-        <div><p class="case-label" style="color:#7DB0FF;">The AI solution</p><p style="color:var(--muted);font-size:15px;">A pipeline that turns one weekly voice note into posts, a newsletter, and a schedule, all in her tone and approved in one tap.</p></div>
-        <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;"><span class="kpi">5x content output</span><span class="kpi">12 hrs saved / week</span></div>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- ABOUT -->
-<section id="about" class="section" style="background:var(--bg-2);border-block:1px solid var(--line);">
+<section id="about" class="section">
   <div class="wrap">
     <div class="grid md:grid-cols-[320px_1fr] gap-12 items-center">
-      <div class="avatar" role="img" aria-label="Alfaiz Ansari monogram"><span>AA</span></div>
+      <div class="avatar" role="img" aria-label="AI Automation Hub monogram"><span>AH</span></div>
       <div style="min-width:0;">
-        <p class="eyebrow">About the developer</p>
-        <h2 class="h2" style="margin-top:10px;">Hi, I'm Alfaiz Ansari</h2>
-        <p style="color:#C2CCDF;font-size:17px;margin-top:16px;max-width:62ch;">I'm an AI automation specialist who builds practical, real-world systems, not demos. I start with where your time and money are going, then build the smallest AI solution that fixes it and prove it with numbers.</p>
-        <p style="color:var(--muted);margin-top:12px;max-width:62ch;">Clients work with me directly, with plain-language updates, fixed scopes, and documentation so your team can run everything after launch.</p>
+        <p class="eyebrow">About the Hub</p>
+        <h2 class="h2" style="margin-top:10px;">Built by Alfaiz Ansari, open to everyone</h2>
+        <p style="color:#C2CCDF;font-size:17px;margin-top:16px;max-width:62ch;">I'm an AI automation specialist. I started the Hub because the best automation ideas are scattered across private chats and screenshots. Here they live in one searchable place, with the numbers attached.</p>
         <ul class="grid sm:grid-cols-3 gap-4" style="list-style:none;padding:0;margin:28px 0 0;">
-          <li class="glass" style="padding:16px;"><strong style="font-family:var(--font-display);">ROI first</strong><p style="color:var(--muted);font-size:14px;margin-top:4px;">Every project has a target metric before I write a line of code.</p></li>
-          <li class="glass" style="padding:16px;"><strong style="font-family:var(--font-display);">Plain and direct</strong><p style="color:var(--muted);font-size:14px;margin-top:4px;">No jargon, no hidden fees, no lock-in to my tools.</p></li>
-          <li class="glass" style="padding:16px;"><strong style="font-family:var(--font-display);">Built to last</strong><p style="color:var(--muted);font-size:14px;margin-top:4px;">Monitoring, alerts, and handover docs come standard.</p></li>
+          <li class="glass" style="padding:16px;"><strong style="font-family:var(--font-display);">Results first</strong><p style="color:var(--muted);font-size:14px;margin-top:4px;">Every listing includes a measurable outcome.</p></li>
+          <li class="glass" style="padding:16px;"><strong style="font-family:var(--font-display);">Open to all</strong><p style="color:var(--muted);font-size:14px;margin-top:4px;">Freelancers, agencies, and in-house teams are welcome.</p></li>
+          <li class="glass" style="padding:16px;"><strong style="font-family:var(--font-display);">Reusable</strong><p style="color:var(--muted);font-size:14px;margin-top:4px;">Architecture flows and tool stacks you can adapt.</p></li>
         </ul>
+        <div class="glass" style="padding:20px;margin-top:20px;">
+          <h3 style="font-size:15px;font-weight:700;">Submission guidelines</h3>
+          <ul class="m-list" style="margin-top:12px;font-size:14px;">
+            <li>Share real work and real results. If a number is an estimate, say so.</li>
+            <li>Leave out confidential client data, personal details, and secrets such as API keys.</li>
+            <li>No spam, ads, or links to unrelated sites. Listings that break these rules may be removed.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -475,9 +641,9 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
   <div class="wrap">
     <div class="grid lg:grid-cols-[1fr_1.15fr] gap-12">
       <div style="min-width:0;">
-        <p class="eyebrow">Contact</p>
+        <p class="eyebrow">Work with Alfaiz</p>
         <h2 class="h2" style="margin-top:10px;max-width:16ch;">Book your free automation audit</h2>
-        <p class="lead" style="margin-top:14px;">Tell me what eats your team's time. I'll reply with the two or three automations that would pay off fastest.</p>
+        <p class="lead" style="margin-top:14px;">Want help building your own automation? Tell me what eats your team's time. I'll reply with the two or three automations that would pay off fastest.</p>
         <div style="margin-top:28px;">
           <p class="label">Prefer email? Reach me directly</p>
           <div class="emailbox">
@@ -541,8 +707,8 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
 <footer>
   <div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;">
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="logo-mark">AA</span>
-      <div><strong style="font-family:var(--font-display);">Alfaiz Ansari</strong><p style="color:var(--muted);font-size:13px;line-height:1.3;">AI Automation &amp; Digital Solutions</p></div>
+      <span class="logo-mark">AH</span>
+      <div><strong style="font-family:var(--font-display);">AI Automation Hub</strong><p style="color:var(--muted);font-size:13px;line-height:1.3;">Built by Alfaiz Ansari</p></div>
     </div>
     <div style="display:flex;gap:10px;" aria-label="Social profiles">
       <a class="social" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (add your profile link)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.5H3V9.75Zm6.5 0h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v5.85h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75v5.29h-4V9.75Z"/></svg></a>
@@ -552,6 +718,15 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
     <p style="color:var(--muted);font-size:14px;width:100%;border-top:1px solid var(--line);padding-top:20px;">© 2026 Alfaiz Ansari. All rights reserved.</p>
   </div>
 </footer>
+
+<div id="modal" class="modal" hidden aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mTitle" tabindex="-1">
+    <button type="button" class="modal-x" data-close aria-label="Close dialog">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="m-scroll" id="modalScroll"><div id="modalBody"></div></div>
+  </div>
+</div>
 
 <div class="toast-region" aria-live="polite" aria-atomic="true"><div id="toastHost"></div></div>
 
@@ -572,62 +747,6 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
   menuBtn.addEventListener('click', function () { setMenu(menu.hidden); });
   Array.prototype.forEach.call(document.querySelectorAll('.mm'), function (a) { a.addEventListener('click', function () { setMenu(false); }); });
   window.addEventListener('resize', function () { if (window.innerWidth >= 1024) setMenu(false); });
-
-  /* ---------- hero dashboard (sample data) ---------- */
-  var tasks = 1284, hours = 37.5, leads = 96;
-  var heights = [38, 52, 44, 66, 58, 74, 62, 80, 70, 88, 76, 92];
-  var barsEl = $('bars');
-  heights.forEach(function () { var b = document.createElement('div'); b.className = 'bar'; barsEl.appendChild(b); });
-  function paintBars() {
-    var els = barsEl.children;
-    for (var i = 0; i < els.length; i++) {
-      els[i].style.height = heights[i] + '%';
-      els[i].className = 'bar' + (i === els.length - 1 ? ' hot' : '');
-    }
-  }
-  function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
-  function paintTiles() {
-    $('mTasks').textContent = fmt(tasks);
-    $('mHours').textContent = hours.toFixed(1);
-    $('mLeads').textContent = fmt(leads);
-  }
-  var events = [
-    ['b', 'WhatsApp lead qualified and booked a site visit', 'just now'],
-    ['g', 'Order #4821 validated, courier booked', 'just now'],
-    ['b', 'Support chat resolved without human help', 'just now'],
-    ['g', 'Invoice sent and payment reminder scheduled', 'just now'],
-    ['b', 'New enquiry added to CRM with lead score 86', 'just now'],
-    ['g', 'Weekly report compiled and emailed to the team', 'just now'],
-    ['b', 'Follow-up sent to 12 warm leads', 'just now']
-  ];
-  var evIdx = 0, feed = $('feed');
-  var check = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>';
-  function addEvent(label) {
-    var e = events[evIdx % events.length]; evIdx++;
-    var li = document.createElement('li');
-    li.innerHTML = '<span class="chip ' + (e[0] === 'b' ? 'b' : '') + '">' + check + '</span><span class="t"></span><small>' + (label || e[2]) + '</small>';
-    li.querySelector('.t').textContent = e[1];
-    feed.insertBefore(li, feed.firstChild);
-    while (feed.children.length > 4) feed.removeChild(feed.lastChild);
-    var s = feed.children;
-    for (var i = 1; i < s.length; i++) s[i].querySelector('small').textContent = (i * 3) + 's ago';
-  }
-  for (var k = 0; k < 4; k++) addEvent();
-  paintBars(); paintTiles();
-  if (!reduce) {
-    setInterval(function () {
-      tasks += Math.floor(Math.random() * 6) + 2;
-      hours += 0.1;
-      if (Math.random() > 0.6) leads += 1;
-      paintTiles();
-      addEvent();
-    }, 3000);
-    setInterval(function () {
-      heights = heights.map(function (h, i) { return i === heights.length - 1 ? Math.max(40, Math.min(98, h + (Math.random() * 14 - 6))) : h; });
-      heights.push(Math.max(40, Math.min(98, 60 + Math.random() * 38))); heights.shift();
-      paintBars();
-    }, 4500);
-  }
 
   /* ---------- ROI calculator ---------- */
   var cur = 'USD';
@@ -739,7 +858,765 @@ footer { border-top: 1px solid var(--line); background: var(--bg-2); padding-blo
   ['fName', 'fEmail', 'fMsg'].forEach(function (id) {
     $(id).addEventListener('input', function () { this.removeAttribute('aria-invalid'); });
   });
+  /* ---------- card modals ---------- */
+  var SERVICES = [
+    {
+      service: "Custom AI chatbot or assistant",
+      title: "Custom AI Chatbots & Assistants",
+      intro: "An assistant trained on your own services, prices, and policies. It answers customers in seconds on your website and WhatsApp, captures their details, and passes anything tricky to your team.",
+      cases: [
+        "A clinic that books appointments and answers fee and timing questions at 2 a.m.",
+        "A coaching or school business that qualifies enquiries and sends the right brochure automatically.",
+        "A shop that tracks orders, explains return rules, and recommends products in chat.",
+        "An internal helpdesk bot that answers HR and IT questions from your company documents."
+      ],
+      stack: ["OpenAI API", "WhatsApp Cloud API", "n8n", "Make", "Vector search (Pinecone / Supabase pgvector)", "React chat widget", "Google Sheets", "HubSpot / Zoho CRM"],
+      stackNote: "I pick the lightest set of tools that does the job, and you own every account and key.",
+      steps: [
+        ["Collect your knowledge", "Gather FAQs, price lists, policies, and past chats so the assistant speaks from facts."],
+        ["Index and train", "Load the content into a searchable knowledge base so answers come from your documents, not guesses."],
+        ["Design the conversation", "Define tone, the questions to ask, and the exact moments to hand over to a person."],
+        ["Connect your channels", "Link WhatsApp, your website widget, and your CRM so every lead lands in one place."],
+        ["Test on real questions", "Run hundreds of real customer messages, fix weak answers, and add safety limits."],
+        ["Launch and improve", "Go live, then review chat logs weekly to close gaps and raise resolution rates."]
+      ]
+    },
+    {
+      service: "Business workflow automation",
+      title: "Business Workflow Automation",
+      intro: "Your CRM, email, WhatsApp, and spreadsheets start talking to each other. Work moves forward by itself, and your team only steps in for decisions.",
+      cases: [
+        "A new website enquiry becomes a CRM contact, a Sheets row, and a WhatsApp welcome message within seconds.",
+        "Overdue invoices trigger polite reminders, then alert you only if payment is still missing.",
+        "Orders are validated, booked with a courier, and tracked without anyone retyping details.",
+        "New hires receive accounts, documents, and a checklist the day they sign."
+      ],
+      stack: ["n8n", "Make", "Zapier", "WhatsApp Cloud API", "Gmail API", "Google Sheets API", "Airtable", "HubSpot / Zoho CRM", "Webhooks & REST APIs", "OpenAI API"],
+      stackNote: "AI steps are added where they help, for example reading messy emails or sorting requests.",
+      steps: [
+        ["Map the current process", "Walk through each task, who does it, and where time and errors pile up."],
+        ["Set the trigger", "Pick the event that starts the flow, such as a form, an email, or a payment."],
+        ["Clean and validate data", "Check and standardise fields so bad data never reaches your systems."],
+        ["Route to your tools", "Update the CRM, sheets, and messages in the right order with the right details."],
+        ["Add error alerts", "If any step fails you get an email or WhatsApp alert, and the job retries safely."],
+        ["Document and train", "Hand over a simple guide and a short walkthrough so your team stays in control."]
+      ]
+    },
+    {
+      service: "AI content and marketing engine",
+      title: "AI Content & Marketing Engines",
+      intro: "A repeatable pipeline that turns one idea, voice note, or product list into a week of on-brand content. Nothing is published until you approve it.",
+      cases: [
+        "A solo expert who records one weekly voice note and gets posts, a newsletter, and captions back.",
+        "An online store that writes hundreds of consistent product descriptions from a spreadsheet.",
+        "A local business that runs a monthly social calendar without hiring an agency.",
+        "A marketing team that tests ten ad copy variants in the time it took to write one."
+      ],
+      stack: ["OpenAI API", "Anthropic Claude API", "Whisper speech-to-text", "Make", "n8n", "Notion / Airtable calendar", "Buffer", "Mailchimp", "Google Analytics"],
+      stackNote: "Prompts are tuned on your best past content, so the output sounds like you and not like a template.",
+      steps: [
+        ["Capture your brand voice", "Study your best posts, tone rules, and words to avoid, then turn them into a style guide."],
+        ["Build the prompt library", "Create reusable templates for posts, emails, product copy, and ads."],
+        ["Feed in raw material", "Drop in a voice note, link, or spreadsheet row. The pipeline transcribes and organises it."],
+        ["Generate the drafts", "AI produces several formats at once, checked against your style rules."],
+        ["Approve in one tap", "Review everything in a simple board and edit or approve with a click."],
+        ["Schedule and report", "Approved items are scheduled automatically and a performance summary arrives weekly."]
+      ]
+    },
+    {
+      service: "Smart web or app integration",
+      title: "Smart Web & App Integration",
+      intro: "Fast, modern websites and internal tools with AI features built in. They connect to your payments, bookings, and data so the whole thing works as one system.",
+      cases: [
+        "A catalogue site with AI search that understands what customers mean, not just keywords.",
+        "A booking site that routes each enquiry to the right person and confirms by WhatsApp.",
+        "An internal dashboard that pulls live sales and leads from your sheets and CRM.",
+        "A members area with online payments, automatic invoices, and access control."
+      ],
+      stack: ["React", "Next.js", "Tailwind CSS", "Node.js / Express", "OpenAI API", "Supabase / Firebase", "Razorpay / Stripe", "REST APIs & webhooks", "Vercel"],
+      stackNote: "Built mobile-first, with performance and accessibility checked before launch.",
+      steps: [
+        ["Define goals and user flows", "Agree what visitors should do and what your team needs to see behind the scenes."],
+        ["Design the interface", "Share clean screens for approval before development starts."],
+        ["Build the front end", "Develop fast, responsive pages and components in React."],
+        ["Connect the back end", "Wire up the database, payments, email, and WhatsApp through secure APIs."],
+        ["Add the AI features", "Plug in search, assistants, or smart forms where they save visitors time."],
+        ["Test, deploy, and monitor", "Test on real devices, launch on reliable hosting, and set up analytics and alerts."]
+      ]
+    }
+  ];
+
+  /* ======================================================================
+     AI AUTOMATION HUB: project data layer, public feed, and submissions
+
+     HOW TO CONNECT A REAL DATABASE (full steps are in the setup guide):
+       Supabase:  1) run the SQL schema  2) paste SUPABASE_URL and
+                  SUPABASE_ANON_KEY below  3) set BACKEND to 'supabase'
+       Firebase:  1) create a Firestore database and paste the rules
+                  2) paste your web-app config into FIREBASE below
+                  3) set BACKEND to 'firebase'
+     Until then BACKEND stays 'local': projects are saved in this browser's
+     localStorage only, which is perfect for previewing.
+     Every adapter exposes the same two methods, list() and add(project),
+     so the rest of the page never needs to change.
+     ====================================================================== */
+  var CONFIG = {
+    BACKEND: 'local',                // 'local' | 'supabase' | 'firebase'
+
+    SUPABASE_URL: '',                // for example https://abcdxyz.supabase.co
+    SUPABASE_ANON_KEY: '',           // the public anon key (safe in the browser when Row Level Security is on)
+    SUPABASE_TABLE: 'projects',
+
+    FIREBASE: { apiKey: '', authDomain: '', projectId: '', appId: '' },
+    FIREBASE_COLLECTION: 'projects',
+
+    AUTO_PUBLISH: true,              // true: new projects appear at once. false: saved as 'pending' for you to approve
+    EXAMPLE_LISTINGS_UNTIL_REAL_COUNT: 6, // show labelled example listings until this many real projects exist (0 = never)
+    SUBMIT_COOLDOWN_SECONDS: 30      // minimum wait between submissions from one browser
+  };
+
+  var CATS = [
+    { id: 'chatbot', label: 'Chatbot / Assistant' },
+    { id: 'workflow', label: 'Workflow Automation' },
+    { id: 'content', label: 'Content & Marketing' },
+    { id: 'web', label: 'Web & App Integration' }
+  ];
+  CATS.forEach(function (c, i) { c.guide = SERVICES[i]; c.service = SERVICES[i].service; });
+  function catOf(id) { for (var i = 0; i < CATS.length; i++) { if (CATS[i].id === id) return CATS[i]; } return null; }
+
+  /* ---------- helpers ---------- */
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+    });
+  }
+  function safeUrl(u) {
+    try { var x = new URL(String(u)); return (x.protocol === 'https:' || x.protocol === 'http:') ? x.href : ''; } catch (e) { return ''; }
+  }
+  function uid() {
+    try { if (window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch (e) {}
+    return 'p-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+  }
+  function str(v, max) { return String(v == null ? '' : v).trim().slice(0, max); }
+  function fmtDate(ts) {
+    try { return new Date(ts).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }); } catch (e) { return ''; }
+  }
+  function ago(ts) {
+    var s = Math.max(0, (Date.now() - ts) / 1000);
+    if (s < 90) return 'just now';
+    if (s < 3600) return Math.round(s / 60) + 'm ago';
+    if (s < 86400) return Math.round(s / 3600) + 'h ago';
+    if (s < 2592000) return Math.round(s / 86400) + 'd ago';
+    return fmtDate(ts);
+  }
+  function tween(el, from, to, fmt) {
+    if (reduce || from === to) { el.textContent = fmt(to); return; }
+    var t0 = null, dur = 650;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(from + (to - from) * e);
+      if (p < 1) requestAnimationFrame(step); else el.textContent = fmt(to);
+    }
+    requestAnimationFrame(step);
+  }
+  function scrollToId(id) { $(id).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
+
+  /* ---------- storage helpers (localStorage with an in-memory fallback) ---------- */
+  var LS_KEY = 'aihub.projects.v1', LS_MINE = 'aihub.mine.v1', LS_LAST = 'aihub.lastSubmit.v1';
+  var memStore = {};
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return memStore[k] || null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) { memStore[k] = v; } }
+  function readJSON(k, d) { try { var v = lsGet(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+
+  /* ---------- data model ----------
+     { id, title, builder, link, category, problem, solution, flow: [steps],
+       tools: [names], result, status: 'approved' | 'pending', createdAt: ms } */
+  function normalize(r) {
+    if (!r || typeof r !== 'object') return null;
+    var cat = catOf(r.category), title = str(r.title, 90);
+    if (!cat || !title) return null;
+    var tools = Array.isArray(r.tools) ? r.tools : [], flow = Array.isArray(r.flow) ? r.flow : [];
+    return {
+      id: str(r.id, 80) || uid(), example: !!r.example, title: title,
+      builder: str(r.builder, 60) || 'Anonymous', link: safeUrl(r.link || ''),
+      category: cat.id, problem: str(r.problem, 600), solution: str(r.solution, 800),
+      flow: flow.map(function (x) { return str(x, 90); }).filter(Boolean).slice(0, 8),
+      tools: tools.map(function (x) { return str(x, 30); }).filter(Boolean).slice(0, 12),
+      result: str(r.result, 160), status: str(r.status, 12) || 'approved',
+      createdAt: Number(r.createdAt) || Date.now()
+    };
+  }
+
+  /* ---------- adapter 1: localStorage (default, preview mode) ---------- */
+  var localAdapter = {
+    name: 'local',
+    list: function () { return Promise.resolve(readJSON(LS_KEY, [])); },
+    add: function (p) {
+      var all = readJSON(LS_KEY, []);
+      all.unshift(p);
+      lsSet(LS_KEY, JSON.stringify(all.slice(0, 200)));
+      return Promise.resolve(p);
+    },
+    remove: function (id) {
+      var all = readJSON(LS_KEY, []).filter(function (x) { return x.id !== id; });
+      lsSet(LS_KEY, JSON.stringify(all));
+      return Promise.resolve();
+    }
+  };
+
+  /* ---------- adapter 2: Supabase (plain REST, no library needed) ---------- */
+  function sbBase() { return CONFIG.SUPABASE_URL.replace(/\/+$/, '') + '/rest/v1/' + CONFIG.SUPABASE_TABLE; }
+  function sbHeaders(extra) {
+    var h = { apikey: CONFIG.SUPABASE_ANON_KEY, Authorization: 'Bearer ' + CONFIG.SUPABASE_ANON_KEY, 'Content-Type': 'application/json' };
+    for (var k in (extra || {})) h[k] = extra[k];
+    return h;
+  }
+  function chk(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r; }
+  function sbToRow(p) {
+    var row = {
+      title: p.title, builder_name: p.builder, builder_link: p.link || null, category: p.category,
+      problem: p.problem, solution: p.solution, flow: p.flow, tools: p.tools, result: p.result, status: p.status
+    };
+    if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(p.id)) row.id = p.id;
+    return row;
+  }
+  function sbFromRow(r) {
+    return {
+      id: r.id, title: r.title, builder: r.builder_name, link: r.builder_link, category: r.category,
+      problem: r.problem, solution: r.solution, flow: r.flow, tools: r.tools, result: r.result,
+      status: r.status, createdAt: Date.parse(r.created_at)
+    };
+  }
+  var supabaseAdapter = {
+    name: 'supabase',
+    list: function () {
+      return fetch(sbBase() + '?select=*&status=eq.approved&order=created_at.desc&limit=300', { headers: sbHeaders() })
+        .then(chk).then(function (r) { return r.json(); }).then(function (rows) { return rows.map(sbFromRow); });
+    },
+    add: function (p) {
+      return fetch(sbBase(), { method: 'POST', headers: sbHeaders({ Prefer: 'return=minimal' }), body: JSON.stringify(sbToRow(p)) })
+        .then(chk).then(function () { return p; });
+    }
+  };
+
+  /* ---------- adapter 3: Firebase Firestore (modular SDK, loaded on demand) ---------- */
+  var fbReady = null;
+  function fbInit() {
+    if (!fbReady) {
+      fbReady = Promise.all([
+        import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'),
+        import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js')
+      ]).then(function (m) {
+        var app = m[0].initializeApp(CONFIG.FIREBASE);
+        return { fs: m[1], db: m[1].getFirestore(app) };
+      });
+    }
+    return fbReady;
+  }
+  var firebaseAdapter = {
+    name: 'firebase',
+    list: function () {
+      return fbInit().then(function (f) {
+        var q = f.fs.query(f.fs.collection(f.db, CONFIG.FIREBASE_COLLECTION), f.fs.where('status', '==', 'approved'), f.fs.limit(300));
+        return f.fs.getDocs(q).then(function (snap) {
+          var out = [];
+          snap.forEach(function (d) { var x = d.data(); x.id = d.id; out.push(x); });
+          return out;
+        });
+      });
+    },
+    add: function (p) {
+      return fbInit().then(function (f) {
+        var doc = {
+          title: p.title, builder: p.builder, link: p.link || '', category: p.category, problem: p.problem,
+          solution: p.solution, flow: p.flow, tools: p.tools, result: p.result, status: p.status, createdAt: p.createdAt
+        };
+        return f.fs.addDoc(f.fs.collection(f.db, CONFIG.FIREBASE_COLLECTION), doc).then(function (ref) { p.id = ref.id; return p; });
+      });
+    }
+  };
+
+  function pickAdapter() {
+    if (CONFIG.BACKEND === 'supabase') {
+      if (CONFIG.SUPABASE_URL && CONFIG.SUPABASE_ANON_KEY) return supabaseAdapter;
+      console.warn('AI Automation Hub: BACKEND is "supabase" but SUPABASE_URL or SUPABASE_ANON_KEY is empty. Using local storage.');
+    }
+    if (CONFIG.BACKEND === 'firebase') {
+      if (CONFIG.FIREBASE.projectId && CONFIG.FIREBASE.apiKey) return firebaseAdapter;
+      console.warn('AI Automation Hub: BACKEND is "firebase" but the FIREBASE config is empty. Using local storage.');
+    }
+    return localAdapter;
+  }
+  var adapter = pickAdapter();
+
+  /* ---------- labelled example listings (so the feed is never empty at launch) ---------- */
+  var T0 = Date.parse('2026-11-01T00:00:00Z'), DAY = 86400000;
+  var EXAMPLES = [
+    { id: 'example-chatbot', example: true, category: 'chatbot', title: 'WhatsApp booking assistant for a clinic', builder: 'Example listing', createdAt: T0 + 3 * DAY,
+      problem: 'Front-desk staff spent hours answering the same fee, timing, and booking questions, and missed messages after closing time.',
+      solution: 'A WhatsApp assistant answers questions from the clinic\'s own FAQ, checks open slots, books the appointment, and hands unusual cases to a person.',
+      flow: ['Patient messages the clinic on WhatsApp', 'Webhook sends the message to n8n', 'OpenAI answers from the clinic FAQ or asks for booking details', 'Slot is booked in Google Calendar', 'Confirmation goes back on WhatsApp and the reception is notified'],
+      tools: ['WhatsApp Cloud API', 'n8n', 'OpenAI API', 'Google Calendar'], result: 'Illustrative result: about 15 hrs/week of front-desk time freed' },
+    { id: 'example-workflow', example: true, category: 'workflow', title: 'Order-to-shipment automation for an online store', builder: 'Example listing', createdAt: T0 + 2 * DAY,
+      problem: 'Orders were copied by hand between the store, a spreadsheet, and the courier site, and typing mistakes caused wrong shipments.',
+      solution: 'Each new order is validated automatically, booked with the courier, logged in a sheet, and the customer receives tracking updates.',
+      flow: ['New order arrives from the store webhook', 'Address and phone are checked, risky orders flagged', 'Courier API books the shipment and returns a label', 'Order log in Google Sheets is updated', 'Customer gets tracking by WhatsApp and email'],
+      tools: ['Shopify', 'Make', 'Google Sheets', 'Courier API'], result: 'Illustrative result: fewer data-entry errors and same-day dispatch' },
+    { id: 'example-content', example: true, category: 'content', title: 'Voice note to weekly content pipeline', builder: 'Example listing', createdAt: T0 + DAY,
+      problem: 'A solo consultant spent most evenings writing posts and newsletters, so publishing was inconsistent.',
+      solution: 'One weekly voice note is transcribed and turned into posts and a newsletter in the consultant\'s tone, then approved with one tap and scheduled.',
+      flow: ['Consultant records one voice note', 'Whisper transcribes it', 'OpenAI drafts posts and a newsletter using a style guide', 'Drafts wait for approval in a Notion board', 'Approved items are scheduled automatically'],
+      tools: ['Whisper API', 'OpenAI API', 'Make', 'Notion', 'Buffer'], result: 'Illustrative result: a full week of content from one recording' },
+    { id: 'example-web', example: true, category: 'web', title: 'AI product search for a catalogue site', builder: 'Example listing', createdAt: T0,
+      problem: 'Visitors typed what they wanted in plain words, but keyword search returned nothing useful and they left.',
+      solution: 'Product descriptions are embedded once, and each search query is matched by meaning, so visitors find the right item even with vague wording.',
+      flow: ['Visitor types a search in plain language', 'Query is converted to an embedding', 'Closest products are found in the vector database', 'Results are ranked and shown on the page'],
+      tools: ['Next.js', 'OpenAI API', 'Supabase', 'Tailwind CSS'], result: 'Illustrative result: more visitors reach a product page from search' }
+  ].map(normalize);
+
+  /* ---------- state ---------- */
+  var state = { real: [], projects: [], query: '', cat: 'all', loading: true, error: false };
+  var mine = readJSON(LS_MINE, []);
+
+  function compose() {
+    var showEx = CONFIG.EXAMPLE_LISTINGS_UNTIL_REAL_COUNT > state.real.length && !state.error;
+    state.projects = state.real.concat(showEx ? EXAMPLES : []).sort(function (a, b) { return b.createdAt - a.createdAt; });
+  }
+  function findProject(id) {
+    for (var i = 0; i < state.projects.length; i++) { if (state.projects[i].id === id) return state.projects[i]; }
+    return null;
+  }
+  function catCounts() {
+    var o = {};
+    CATS.forEach(function (c) { o[c.id] = 0; });
+    state.projects.forEach(function (p) { o[p.category]++; });
+    return o;
+  }
+  function haystack(p) {
+    var c = catOf(p.category);
+    return (p.title + ' ' + p.problem + ' ' + p.solution + ' ' + p.result + ' ' + p.builder + ' ' + p.tools.join(' ') + ' ' + (c ? c.label : '')).toLowerCase();
+  }
+  function filtered() {
+    var terms = state.query.toLowerCase().split(/\s+/).filter(Boolean);
+    return state.projects.filter(function (p) {
+      if (state.cat !== 'all' && p.category !== state.cat) return false;
+      if (!terms.length) return true;
+      var h = haystack(p);
+      return terms.every(function (t) { return h.indexOf(t) > -1; });
+    });
+  }
+
+  /* ---------- rendering: filters, feed, hero stats ---------- */
+  var arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+  function buildChips() {
+    var html = '<button type="button" class="fchip" data-cat="all" aria-pressed="true">All projects<span class="n">0</span></button>';
+    CATS.forEach(function (c) { html += '<button type="button" class="fchip" data-cat="' + c.id + '" aria-pressed="false">' + esc(c.label) + '<span class="n">0</span></button>'; });
+    $('catChips').innerHTML = html;
+  }
+  function updateChips() {
+    var counts = catCounts();
+    Array.prototype.forEach.call($('catChips').children, function (b) {
+      var id = b.getAttribute('data-cat');
+      b.setAttribute('aria-pressed', String(state.cat === id));
+      b.querySelector('.n').textContent = id === 'all' ? state.projects.length : counts[id];
+    });
+  }
+  function buildBars() {
+    $('pBars').innerHTML = CATS.map(function (c) {
+      return '<div class="crow cat-' + c.id + '" data-cat="' + c.id + '"><span class="lbl">' + esc(c.label) + '</span><span class="trk"><span class="fill"></span></span><span class="cnt">0</span></div>';
+    }).join('');
+  }
+  function updateCatCounts() {
+    var counts = catCounts();
+    Array.prototype.forEach.call(document.querySelectorAll('[data-count-cat]'), function (el) {
+      var n = counts[el.getAttribute('data-count-cat')] || 0;
+      el.textContent = state.loading ? '' : (n === 0 ? 'No projects yet. Be the first to share one.' : n + (n === 1 ? ' project listed' : ' projects listed'));
+    });
+  }
+
+  var shownNums = { pTotal: 0, pCats: 0, pComm: 0 };
+  function setStat(id, n, suffix) {
+    var from = shownNums[id] || 0;
+    shownNums[id] = n;
+    tween($(id), from, n, function (v) { return Math.round(v) + (suffix || ''); });
+  }
+  function renderPulse() {
+    var counts = catCounts(), max = 1, covered = 0, comm = 0;
+    CATS.forEach(function (c) { if (counts[c.id] > max) max = counts[c.id]; if (counts[c.id] > 0) covered++; });
+    state.projects.forEach(function (p) { if (!p.example) comm++; });
+    if (state.loading || state.error) {
+      ['pTotal', 'pCats', 'pComm'].forEach(function (id) { $(id).textContent = '-'; shownNums[id] = 0; });
+    } else {
+      setStat('pTotal', state.projects.length);
+      setStat('pCats', covered, ' / ' + CATS.length);
+      setStat('pComm', comm);
+    }
+    Array.prototype.forEach.call($('pBars').children, function (row) {
+      var id = row.getAttribute('data-cat');
+      row.querySelector('.fill').style.width = (counts[id] / max * 100) + '%';
+      row.querySelector('.cnt').textContent = counts[id];
+    });
+    var latest = state.projects.slice(0, 3);
+    $('pLatest').innerHTML = latest.length ? latest.map(function (p) {
+      return '<li><button type="button" class="lat-item cat-' + p.category + '" data-open-id="' + esc(p.id) + '" aria-haspopup="dialog"><span class="dotc"></span><span class="t">' + esc(p.title) + '</span><small>' + (p.example ? 'Example' : ago(p.createdAt)) + '</small></button></li>';
+    }).join('') : '<li class="pulse-note" style="margin:0">' + (state.loading ? 'Loading...' : 'No projects listed yet.') + '</li>';
+    var ex = state.projects.length - comm, notes = [];
+    if (ex > 0 && !state.loading) notes.push('Includes ' + ex + ' example listing' + (ex > 1 ? 's' : '') + ' that show how a project looks. They disappear as real projects arrive.');
+    if (adapter.name === 'local') notes.push('Demo mode: submissions are saved in this browser only until a database is connected.');
+    $('pNote').textContent = notes.join(' ');
+  }
+
+  function cardHTML(p) {
+    var c = catOf(p.category);
+    var tools = p.tools.slice(0, 4).map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') +
+      (p.tools.length > 4 ? '<span class="tag">+' + (p.tools.length - 4) + '</span>' : '');
+    return '<article class="glass lift pcard clickable cat-' + c.id + '" data-id="' + esc(p.id) + '">' +
+      '<div class="pc-top"><span class="catbadge">' + esc(c.label) + '</span>' + (p.example ? '<span class="exbadge">Example</span>' : '') + '</div>' +
+      '<h3 class="pc-title">' + esc(p.title) + '</h3>' +
+      '<p class="pc-problem">' + esc(p.problem) + '</p>' +
+      '<span class="kpi">' + esc(p.result) + '</span>' +
+      '<div class="chips">' + tools + '</div>' +
+      '<div class="pc-foot"><span class="pc-by">by ' + esc(p.builder) + ' &middot; ' + fmtDate(p.createdAt) + '</span>' +
+      '<button type="button" class="more-btn" aria-haspopup="dialog" aria-label="View case study: ' + esc(p.title) + '">View case study ' + arrow + '</button></div></article>';
+  }
+  function renderFeed() {
+    var host = $('feed'), count = $('resultCount'), clear = $('clearFilters');
+    clear.hidden = !(state.query || state.cat !== 'all');
+    if (state.loading) {
+      host.innerHTML = '<div class="skel"></div><div class="skel"></div><div class="skel"></div>';
+      count.textContent = 'Loading projects...';
+      return;
+    }
+    if (state.error) {
+      host.innerHTML = '<div class="empty"><strong>We could not load the projects</strong><span>Check your connection and try again.</span><button type="button" class="btn btn-ghost btn-sm" data-retry>Try again</button></div>';
+      count.textContent = '';
+      return;
+    }
+    var list = filtered();
+    var filtering = !!(state.query || state.cat !== 'all');
+    count.textContent = list.length + (list.length === 1 ? ' project' : ' projects') + (filtering ? ' found' : ' listed');
+    if (!state.projects.length) {
+      host.innerHTML = '<div class="empty"><strong>No projects yet</strong><span>Be the first to share an AI automation you have built.</span><button type="button" class="btn btn-primary" data-open-submit>+ Submit Your Project</button></div>';
+    } else if (!list.length) {
+      host.innerHTML = '<div class="empty"><strong>No projects match your search</strong><span>Try a different keyword or category, or share a project of your own.</span><button type="button" class="btn btn-ghost btn-sm" data-clear>Clear filters</button></div>';
+    } else {
+      host.innerHTML = list.map(cardHTML).join('');
+    }
+  }
+  function renderAll() { updateChips(); updateCatCounts(); renderPulse(); renderFeed(); }
+
+  function loadProjects() {
+    state.loading = true; state.error = false;
+    renderAll();
+    return adapter.list()
+      .then(function (rows) { state.real = (rows || []).map(normalize).filter(Boolean).filter(function (p) { return p.status === 'approved'; }); })
+      .catch(function (err) { console.error(err); state.error = true; })
+      .then(function () { state.loading = false; compose(); renderAll(); });
+  }
+
+  function setCategory(id) { state.cat = id; updateChips(); renderFeed(); }
+  function resetFilters() { state.cat = 'all'; state.query = ''; $('q').value = ''; updateChips(); renderFeed(); }
+
+  /* ---------- modal shell ---------- */
+  var modal = $('modal'), panel = modal.querySelector('.modal-panel'), mBody = $('modalBody'), mScroll = $('modalScroll');
+  var lastTrigger = null, closeTimer = null, currentService = '';
+
+  function openModal(html, trigger, service) {
+    clearTimeout(closeTimer);
+    lastTrigger = trigger || lastTrigger; currentService = service || '';
+    mBody.innerHTML = html;
+    mScroll.scrollTop = 0;
+    modal.hidden = false; modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('modal-open');
+    void modal.offsetWidth;
+    requestAnimationFrame(function () { modal.classList.add('open'); });
+    panel.focus({ preventScroll: true });
+  }
+  function closeModal(restoreFocus, done) {
+    if (modal.hidden) { if (done) done(); return; }
+    modal.classList.remove('open');
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(function () {
+      modal.hidden = true; modal.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('modal-open');
+      mBody.innerHTML = '';
+      if (restoreFocus !== false && lastTrigger && lastTrigger.focus) lastTrigger.focus({ preventScroll: true });
+      if (done) done();
+    }, reduce ? 0 : 320);
+  }
+
+  /* ---------- category guide modal ---------- */
+  function lis(a) { return a.map(function (x) { return '<li>' + x + '</li>'; }).join(''); }
+  function chipList(a) { return '<div class="chips">' + a.map(function (x) { return '<span class="tag">' + x + '</span>'; }).join('') + '</div>'; }
+
+  function renderGuide(d, iconHTML, c) {
+    var n = catCounts()[c.id] || 0;
+    return '<header class="m-head">' + iconHTML +
+      '<div><p class="eyebrow">Category guide</p><h3 class="m-title" id="mTitle">' + d.title + '</h3></div></header>' +
+      '<p class="m-intro">' + d.intro + '</p>' +
+      '<div class="m-cols">' +
+        '<section class="m-sec"><h4 class="m-h">Real-world use cases</h4><ul class="m-list">' + lis(d.cases) + '</ul></section>' +
+        '<section class="m-sec"><h4 class="m-h">Tech stack &amp; tools</h4>' + chipList(d.stack) + '<p class="m-note">' + d.stackNote + '</p></section>' +
+      '</div>' +
+      '<section class="m-sec"><h4 class="m-h">Typical workflow</h4><ol class="m-steps">' +
+        d.steps.map(function (s, i) {
+          return '<li><span class="step-n sm">' + (i + 1) + '</span><div><strong>' + s[0] + '</strong><p>' + s[1] + '</p></div></li>';
+        }).join('') + '</ol></section>' +
+      '<div class="m-foot">' +
+        '<button type="button" class="btn btn-primary" data-browse="' + c.id + '">' + (n ? 'Browse ' + n + (n === 1 ? ' project' : ' projects') : 'Browse projects') + '</button>' +
+        '<button type="button" class="btn btn-ghost" data-submit="' + c.id + '">Submit a project</button>' +
+        '<button type="button" class="btn btn-ghost" data-book>Get help from Alfaiz</button>' +
+      '</div>';
+  }
+
+  function bookService(service) {
+    closeModal(false, function () {
+      var sel = $('fService');
+      sel.value = service;
+      scrollToId('contact');
+      setTimeout(function () {
+        sel.focus({ preventScroll: true });
+        sel.classList.add('flash');
+        setTimeout(function () { sel.classList.remove('flash'); }, 1800);
+        toast('"' + service + '" is selected in the form below.');
+      }, reduce ? 0 : 750);
+    });
+  }
+
+  /* ---------- project case-study modal ---------- */
+  function openProject(id, trigger) {
+    var p = findProject(id);
+    if (!p) return;
+    var c = catOf(p.category), link = safeUrl(p.link);
+    var canRemove = !p.example && !!adapter.remove && mine.indexOf(p.id) > -1;
+    var by = link ? '<a href="' + esc(link) + '" target="_blank" rel="noopener noreferrer nofollow ugc">' + esc(p.builder) + '</a>' : esc(p.builder);
+    var html = '<header class="m-head"><div class="cat-' + c.id + '"><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">' +
+        '<span class="catbadge">' + esc(c.label) + '</span>' + (p.example ? '<span class="exbadge">Example listing</span>' : '') + '</div>' +
+        '<h3 class="m-title" id="mTitle">' + esc(p.title) + '</h3>' +
+        '<p class="m-by">Built by ' + by + ' &middot; ' + esc(fmtDate(p.createdAt)) + '</p></div></header>' +
+      (p.example ? '<p class="m-notice">This is an example listing that shows how a project looks. It is not a real client project, and the result is illustrative. Submit your own to replace it.</p>' : '') +
+      '<section class="m-sec"><h4 class="m-h">The problem</h4><p class="m-text">' + esc(p.problem) + '</p></section>' +
+      '<section class="m-sec"><h4 class="m-h">The AI solution</h4><p class="m-text">' + esc(p.solution) + '</p></section>' +
+      (p.flow.length ? '<section class="m-sec"><h4 class="m-h">Architecture flow</h4><ol class="pipe">' +
+        p.flow.map(function (s, i) { return '<li><span class="pn">' + (i + 1) + '</span><span class="pt">' + esc(s) + '</span></li>'; }).join('') + '</ol></section>' : '') +
+      (p.tools.length ? '<section class="m-sec"><h4 class="m-h">Tech stack &amp; tools</h4><div class="chips">' +
+        p.tools.map(function (t) { return '<button type="button" class="tag toolchip" data-tool="' + esc(t) + '" title="Find other projects using ' + esc(t) + '">' + esc(t) + '</button>'; }).join('') +
+        '</div><p class="m-note">Select a tool to find other projects that use it.</p></section>' : '') +
+      '<section class="m-sec"><h4 class="m-h">Measured result</h4><div class="m-result">' + esc(p.result) + '</div></section>' +
+      '<div class="m-foot"><button type="button" class="btn btn-primary" data-submit="' + c.id + '">Submit your own project</button>' +
+      '<button type="button" class="btn btn-ghost" data-close>Close</button>' +
+      (canRemove ? '<button type="button" class="btn btn-ghost btn-danger" data-remove="' + esc(p.id) + '">Remove my submission</button>' : '') + '</div>';
+    openModal(html, trigger, c.service);
+  }
+
+  /* ---------- submission modal ---------- */
+  function openSubmit(catId, trigger) {
+    var opts = '<option value="">Choose a category</option>' + CATS.map(function (c) {
+      return '<option value="' + c.id + '"' + (c.id === catId ? ' selected' : '') + '>' + esc(c.label) + '</option>';
+    }).join('');
+    var req = ' <span aria-hidden="true" style="color:#FCA5A5">*</span>';
+    var html = '<header class="m-head"><div><p class="eyebrow">Share your work</p><h3 class="m-title" id="mTitle">Submit your project</h3></div></header>' +
+      '<p class="m-intro">Tell the community what you built and what it achieved. ' + (CONFIG.AUTO_PUBLISH ? 'Your project appears in the public feed as soon as you submit.' : 'Your project appears in the public feed after a quick review.') + ' Fields marked with * are required.</p>' +
+      '<form id="subForm" novalidate>' +
+        '<div class="form-grid">' +
+          '<div><label class="label" for="sTitle">Project title' + req + '</label><input class="input" id="sTitle" type="text" maxlength="90" placeholder="WhatsApp lead bot for a real estate agency" autocomplete="off"><p class="err" id="e-sTitle" role="alert"></p></div>' +
+          '<div class="form-grid two" style="margin:0">' +
+            '<div><label class="label" for="sName">Builder or company name' + req + '</label><input class="input" id="sName" type="text" maxlength="60" placeholder="Your name or company" autocomplete="name"><p class="err" id="e-sName" role="alert"></p></div>' +
+            '<div><label class="label" for="sLink">Portfolio or contact link</label><input class="input" id="sLink" type="text" maxlength="200" placeholder="https://yourportfolio.com" autocomplete="url" inputmode="url"><p class="err" id="e-sLink" role="alert"></p></div>' +
+          '</div>' +
+          '<div><label class="label" for="sCat">Category' + req + '</label><select class="input" id="sCat">' + opts + '</select><p class="err" id="e-sCat" role="alert"></p></div>' +
+          '<div><label class="label" for="sProblem">The problem it solved' + req + '</label><textarea class="input" id="sProblem" rows="3" maxlength="600" placeholder="What was slow, manual, or costly before?" style="resize:vertical;"></textarea><p class="err" id="e-sProblem" role="alert"></p></div>' +
+          '<div><label class="label" for="sSolution">The AI solution' + req + '</label><textarea class="input" id="sSolution" rows="3" maxlength="800" placeholder="What did you build, and where does AI help?" style="resize:vertical;"></textarea><p class="err" id="e-sSolution" role="alert"></p></div>' +
+          '<div><label class="label" for="sFlow">Architecture flow</label><textarea class="input" id="sFlow" rows="4" maxlength="700" placeholder="Customer sends a WhatsApp message&#10;n8n receives the webhook&#10;OpenAI qualifies the lead&#10;Lead is saved to the CRM" style="resize:vertical;"></textarea><p class="hint">One step per line, up to 8 steps. You can also separate steps with arrows (→).</p></div>' +
+          '<div><label class="label" for="sTools">Tools and tech stack' + req + '</label><input class="input" id="sTools" type="text" maxlength="300" placeholder="n8n, OpenAI API, WhatsApp Cloud API, Google Sheets" autocomplete="off"><p class="hint">Separate tools with commas.</p><p class="err" id="e-sTools" role="alert"></p></div>' +
+          '<div><label class="label" for="sResult">Measurable result or impact' + req + '</label><input class="input" id="sResult" type="text" maxlength="160" placeholder="Saved 15 hrs/week and cut response time to under 1 minute" autocomplete="off"><p class="err" id="e-sResult" role="alert"></p></div>' +
+          '<div class="hp" aria-hidden="true"><label for="sWebsite">Leave this field empty</label><input id="sWebsite" type="text" tabindex="-1" autocomplete="off"></div>' +
+          '<div><label class="check" for="sConsent"><input type="checkbox" id="sConsent"><span>I agree that this information will be shown publicly, and it contains no confidential client data or secret keys.</span></label><p class="err" id="e-sConsent" role="alert"></p></div>' +
+        '</div>' +
+        '<div class="form-error" id="subError" role="alert" hidden></div>' +
+        '<div class="m-foot"><button type="submit" class="btn btn-primary" id="subBtn">Publish my project</button><button type="button" class="btn btn-ghost" data-close>Cancel</button></div>' +
+      '</form>';
+    openModal(html, trigger, '');
+  }
+
+  function parseTools(raw) {
+    var seen = {}, out = [];
+    raw.split(/[,\n;]+/).forEach(function (t) {
+      t = t.trim().slice(0, 30);
+      var k = t.toLowerCase();
+      if (t && !seen[k]) { seen[k] = 1; out.push(t); }
+    });
+    return out.slice(0, 12);
+  }
+  function parseFlow(raw) {
+    var out = [];
+    raw.split(/\r?\n/).forEach(function (line) {
+      line.split(/\s*(?:→|->|=>)\s*/).forEach(function (s) { s = s.trim().replace(/^[\-\*\d\.\)\s]+/, '').slice(0, 90); if (s) out.push(s); });
+    });
+    return out.slice(0, 8);
+  }
+
+  function handleSubmit() {
+    var val = function (id) { return $(id).value.trim(); };
+    var bad = null;
+    function check(ok, id, msg) { setErr($(id), $('e-' + id), ok ? '' : msg); if (!ok && !bad) bad = $(id); }
+    var title = val('sTitle'), name = val('sName'), linkRaw = val('sLink'), cat = $('sCat').value;
+    var problem = val('sProblem'), solution = val('sSolution'), result = val('sResult');
+    var tools = parseTools($('sTools').value), flow = parseFlow($('sFlow').value), link = '';
+    if (linkRaw) link = safeUrl(/^[a-z][a-z0-9+.\-]*:/i.test(linkRaw) ? linkRaw : 'https://' + linkRaw);
+    check(title.length >= 4, 'sTitle', 'Give your project a title of at least 4 characters.');
+    check(name.length >= 2, 'sName', 'Please enter your name or company.');
+    check(!linkRaw || !!link, 'sLink', 'Enter a valid web link, for example https://yoursite.com.');
+    check(!!catOf(cat), 'sCat', 'Choose a category.');
+    check(problem.length >= 20, 'sProblem', 'Describe the problem in at least 20 characters.');
+    check(solution.length >= 20, 'sSolution', 'Describe your solution in at least 20 characters.');
+    check(tools.length > 0, 'sTools', 'List at least one tool, separated by commas.');
+    check(result.length >= 3, 'sResult', 'Share a measurable result or impact.');
+    check($('sConsent').checked, 'sConsent', 'Please confirm to publish your project.');
+    var errBox = $('subError');
+    errBox.hidden = true;
+    if (bad) { bad.focus(); return; }
+
+    if ($('sWebsite').value) { closeModal(false); return; } /* honeypot: bots fill hidden fields */
+    var wait = Math.ceil(CONFIG.SUBMIT_COOLDOWN_SECONDS - (Date.now() - (Number(lsGet(LS_LAST)) || 0)) / 1000);
+    if (wait > 0) { errBox.textContent = 'Please wait ' + wait + ' more seconds before submitting another project.'; errBox.hidden = false; return; }
+
+    var p = normalize({
+      id: uid(), title: title, builder: name, link: link, category: cat, problem: problem, solution: solution,
+      flow: flow, tools: tools, result: result, status: CONFIG.AUTO_PUBLISH ? 'approved' : 'pending', createdAt: Date.now()
+    });
+    var btn = $('subBtn');
+    btn.disabled = true; btn.textContent = 'Publishing...';
+    adapter.add(p).then(function (saved) {
+      saved = saved || p;
+      lsSet(LS_LAST, String(Date.now()));
+      mine.push(saved.id); lsSet(LS_MINE, JSON.stringify(mine.slice(-100)));
+      if (saved.status === 'approved') { state.real.unshift(saved); }
+      compose(); state.cat = 'all'; state.query = ''; $('q').value = '';
+      renderAll();
+      closeModal(false, function () {
+        scrollToId('projects');
+        if (saved.status !== 'approved') toast('Thanks! Your project was submitted and will appear after review.');
+        else if (adapter.name === 'local') toast('Your project is in the feed. Demo mode: it is saved in this browser only.');
+        else toast('Your project is live in the public feed. Thank you for sharing!');
+      });
+    }).catch(function (err) {
+      console.error(err);
+      errBox.textContent = 'We could not save your project. Check your connection and try again.';
+      errBox.hidden = false;
+      btn.disabled = false; btn.textContent = 'Publish my project';
+    });
+  }
+
+  /* ---------- wiring ---------- */
+  function makeClickable(card, label, ariaName, open) {
+    card.classList.add('clickable');
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'more-btn';
+    btn.setAttribute('aria-haspopup', 'dialog');
+    btn.setAttribute('aria-label', label + ': ' + ariaName);
+    btn.innerHTML = '<span>' + label + '</span>' + arrow;
+    card.appendChild(btn);
+    card.addEventListener('click', function () { open(btn); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('#categories article'), function (card, i) {
+    var c = CATS[i];
+    if (!c) return;
+    card.classList.add('cat-' + c.id);
+    var count = document.createElement('p');
+    count.className = 'cat-count'; count.setAttribute('data-count-cat', c.id);
+    card.appendChild(count);
+    makeClickable(card, 'See guide, tools & workflow', c.guide.title, function (btn) {
+      openModal(renderGuide(c.guide, card.querySelector('.icon-box').outerHTML, c), btn, c.service);
+    });
+  });
+
+  buildChips(); buildBars();
+
+  $('catChips').addEventListener('click', function (ev) {
+    var b = ev.target.closest('.fchip');
+    if (b) setCategory(b.getAttribute('data-cat'));
+  });
+  var qTimer = null;
+  $('q').addEventListener('input', function () {
+    clearTimeout(qTimer);
+    qTimer = setTimeout(function () { state.query = $('q').value.trim(); renderFeed(); }, 120);
+  });
+  $('clearFilters').addEventListener('click', resetFilters);
+  $('feed').addEventListener('click', function (ev) {
+    if (ev.target.closest('[data-retry]')) { loadProjects(); return; }
+    if (ev.target.closest('[data-clear]')) { resetFilters(); return; }
+    if (ev.target.closest('[data-open-submit]')) return;
+    var card = ev.target.closest('.pcard');
+    if (card) openProject(card.getAttribute('data-id'), card.querySelector('.more-btn'));
+  });
+  document.addEventListener('click', function (ev) {
+    var s = ev.target.closest('[data-open-submit]');
+    if (s) { ev.preventDefault(); openSubmit('', s); return; }
+    var o = ev.target.closest('[data-open-id]');
+    if (o) openProject(o.getAttribute('data-open-id'), o);
+  });
+
+  modal.addEventListener('click', function (ev) {
+    var t = ev.target, b;
+    if (t === modal || t.closest('[data-close]')) { closeModal(true); return; }
+    if (t.closest('[data-book]')) { bookService(currentService); return; }
+    if ((b = t.closest('[data-browse]'))) {
+      var cid = b.getAttribute('data-browse');
+      closeModal(false, function () { resetFilters(); setCategory(cid); scrollToId('projects'); });
+      return;
+    }
+    if ((b = t.closest('[data-submit]'))) {
+      var sc = b.getAttribute('data-submit');
+      closeModal(false, function () { openSubmit(sc, null); });
+      return;
+    }
+    if ((b = t.closest('[data-tool]'))) {
+      var tool = b.getAttribute('data-tool');
+      closeModal(false, function () { resetFilters(); state.query = tool; $('q').value = tool; renderFeed(); scrollToId('projects'); });
+      return;
+    }
+    if ((b = t.closest('[data-remove]'))) {
+      if (!b.getAttribute('data-armed')) {
+        b.setAttribute('data-armed', '1'); b.textContent = 'Select again to confirm';
+        setTimeout(function () { if (b.isConnected) { b.removeAttribute('data-armed'); b.textContent = 'Remove my submission'; } }, 4000);
+        return;
+      }
+      var rid = b.getAttribute('data-remove');
+      adapter.remove(rid).then(function () {
+        state.real = state.real.filter(function (x) { return x.id !== rid; });
+        mine = mine.filter(function (x) { return x !== rid; }); lsSet(LS_MINE, JSON.stringify(mine));
+        compose(); renderAll();
+        closeModal(false, function () { toast('Your submission was removed.'); });
+      });
+    }
+  });
+  modal.addEventListener('submit', function (ev) {
+    if (ev.target.id === 'subForm') { ev.preventDefault(); handleSubmit(); }
+  });
+  ['sTitle', 'sName', 'sLink', 'sCat', 'sProblem', 'sSolution', 'sTools', 'sResult', 'sConsent'].forEach(function (id) {
+    modal.addEventListener('input', function (ev) { if (ev.target.id === id) { ev.target.removeAttribute('aria-invalid'); var e = $('e-' + id); if (e) e.textContent = ''; } });
+  });
+  document.addEventListener('keydown', function (ev) {
+    if (modal.hidden) return;
+    if (ev.key === 'Escape') { ev.preventDefault(); closeModal(true); return; }
+    if (ev.key === 'Tab') {
+      var f = panel.querySelectorAll('button:not([disabled]), a[href], input:not([tabindex="-1"]), select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (ev.shiftKey && (document.activeElement === first || document.activeElement === panel)) { ev.preventDefault(); last.focus(); }
+      else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* Handy while testing: type AIHub.clearLocal() in the browser console to wipe locally saved projects. */
+  window.AIHub = {
+    config: CONFIG,
+    clearLocal: function () { lsSet(LS_KEY, '[]'); lsSet(LS_MINE, '[]'); lsSet(LS_LAST, '0'); mine = []; return loadProjects(); }
+  };
+
+  loadProjects();
 })();
 </script>
-
-</body></html>
